@@ -1,16 +1,14 @@
-En este *repl* puedes encontrar varios ejemplos que te pueden ayudar con las tareas de estructura.
-
-## Código de Ejemplo (tarea1)
-Para ejecutar el ejemplo tarea1 primero debemos compilar (en la carpeta raíz)
+TAREA11
+"tarea11.c" es el archivo en el cual hice mi codigo, para ejecutarlo en shell se usa el siguiente comando:
 ````
-gcc tdas/*.c tarea1.c -Wno-unused-result -o tarea1
+gcc tdas/*.c tarea11.c -Wno-unused-result -o tarea11
 ````
 
 Y luego ejecutar:
 ````
-./tarea1
+./tarea11
 ````
-
+(estas siguientes lineas no las he editado, son parte del replit de ejemplo que fue compartido)
 ## TDAs
 En la carpeta `tdas` se encuentran implementados distintos TDAs que puedes utilizar (lista, pila, cola, cola con prioridad y mapas). 
 
@@ -25,9 +23,3 @@ Y luego ejecutarlos:
 ````
 ./example
 ````
-
-Se incluyen los siguientes ejemplos:
-* `example1_list`: Uso del TDA Lista, inserción y eliminación de elementos.
-* `example2_menu`: Ejemplo de menú con submenús.
-* `example3_readcsv`: Ejemplo de lectura desde un archivo csv y almacenamiento en datos estructurados.
-* `example4_map`: Ejemplo de uso del TDA mapa.
