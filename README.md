@@ -1,8 +1,8 @@
-#PLANIFICADOR DINAMICO DE TAREAS
+# PLANIFICADOR DINAMICO DE TAREAS
 
 Este programa tiene como fin la gestion de pendientes usando TDAs (tipos de datos abstractos). Principalmente se usa el tipo Cola (Quegue) para garantizar que el despacho de tareas respete el orden de llegada (FIFO), asi en vez de priorizar una tarea por sobre otra, seran atendidas en segun cuando fueron agregadas al programa.
 
-##Compilacion
+## Compilacion
 
 El archivo que contiene el programa es "tarea11.c", para ejecutarlo se usa el siguiente comando:
 
