@@ -138,6 +138,26 @@ void mostrarTareaMasAntigua(tarea *tareaMostrar){
   return;
 }
 
+void limpiarEspaciosCategorias(char *categorias){
+  int ultimoC = strlen(categorias) - 1;
+  while (ultimoC >= 0 && isspace((unsigned char) categorias[ultimoC])) {
+    categorias[ultimoC] = '\0';
+    ultimoC --;
+  }
+
+  int principio = 0;
+  while(categorias[principio] && isspace((unsigned char) categorias[principio])) {
+    principio ++;
+  }
+  if (principio > 0){
+    int i;
+    for (i = 0; categorias[i + principio] != '\0'; i ++){
+      categorias[i] = categorias[i + principio];
+    }
+    categorias[i] = '\0';
+  }
+}
+
 void recolectarDatos(List *listaCategorias, Queue *colaTareas){
   int dato;
   do {
@@ -151,12 +171,15 @@ void recolectarDatos(List *listaCategorias, Queue *colaTareas){
         char nombre[50];
         if(fgets(nombre, sizeof(nombre), stdin)){
           nombre[strcspn(nombre, "\n")] = 0;
+          limpiarEspaciosCategorias(nombre);
           aMayusculas(nombre);
-          char *nombreAux = (char*)malloc((strlen(nombre)+1) * sizeof(char));
-          if(nombreAux != NULL){
-            strcpy(nombreAux, nombre);
-            list_pushBack(listaCategorias, nombreAux);
-          }
+          if (existeCategoria(listaCategorias, nombre) == 0){
+            char *nombreAux = (char*)malloc((strlen(nombre)+1) * sizeof(char));
+            if(nombreAux != NULL){
+              strcpy(nombreAux, nombre);
+              list_pushBack(listaCategorias, nombreAux);
+            }
+          } else printf("Categoria ya existe\n");
         }
         break;
       }
@@ -170,8 +193,9 @@ void recolectarDatos(List *listaCategorias, Queue *colaTareas){
         printf("Escriba la categoria que desea eliminar: \n");
         char nombre[50];
         if(fgets(nombre, sizeof(nombre), stdin)){
-          aMayusculas(nombre);
           nombre[strcspn(nombre, "\n")] = 0;
+          limpiarEspaciosCategorias(nombre);
+          aMayusculas(nombre);
         }
 
         if (existeCategoria(listaCategorias, nombre) == 0) {
@@ -207,12 +231,14 @@ void recolectarDatos(List *listaCategorias, Queue *colaTareas){
         printf("Ingrese categoria a la que pertenece su tarea\n");
         if (fgets(tareaNueva -> ncategoria, 50, stdin)){
           tareaNueva -> ncategoria[strcspn(tareaNueva -> ncategoria, "\n")] = 0;
+          limpiarEspaciosCategorias(tareaNueva -> ncategoria);
           aMayusculas(tareaNueva -> ncategoria);
         }
         while(existeCategoria(listaCategorias, tareaNueva -> ncategoria) == 0){
           printf("Categoria NO valida, ingresar otra\n");
           if(fgets(tareaNueva -> ncategoria, 50, stdin)){
             tareaNueva -> ncategoria[strcspn(tareaNueva -> ncategoria, "\n")] = 0;
+            limpiarEspaciosCategorias(tareaNueva -> ncategoria);
             aMayusculas(tareaNueva -> ncategoria);
           }
         }
@@ -269,12 +295,14 @@ void recolectarDatos(List *listaCategorias, Queue *colaTareas){
         char categoria[50];
         if(fgets(categoria, sizeof(categoria), stdin)){
           categoria[strcspn(categoria, "\n")] = 0;
+          limpiarEspaciosCategorias(categoria);
           aMayusculas(categoria);
 
           while(existeCategoria(listaCategorias, categoria) == 0){
             printf("Categoria no existe, ingresa otra\n");
             fgets(categoria, 50, stdin);
             categoria[strcspn(categoria, "\n")] = 0;
+            limpiarEspaciosCategorias(categoria);
             aMayusculas(categoria);
           }
           
