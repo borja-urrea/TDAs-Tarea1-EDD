@@ -211,9 +211,10 @@ void recolectarDatos(List *listaCategorias, Queue *colaTareas){
         }
         while(existeCategoria(listaCategorias, tareaNueva -> ncategoria) == 0){
           printf("Categoria NO valida, ingresar otra\n");
-          fgets(tareaNueva -> ncategoria, 50, stdin);
-          tareaNueva -> ncategoria[strcspn(tareaNueva -> ncategoria, "\n")] = 0;
-          aMayusculas(tareaNueva -> ncategoria);
+          if(fgets(tareaNueva -> ncategoria, 50, stdin)){
+            tareaNueva -> ncategoria[strcspn(tareaNueva -> ncategoria, "\n")] = 0;
+            aMayusculas(tareaNueva -> ncategoria);
+          }
         }
         
         printf("Ingrese el nombre de su tarea\n");
