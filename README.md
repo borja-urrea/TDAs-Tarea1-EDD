@@ -8,18 +8,23 @@ Y luego ejecutar:
 ````
 ./tarea11
 ````
-(estas siguientes lineas no las he editado, son parte del replit de ejemplo que fue compartido)
-## TDAs
-En la carpeta `tdas` se encuentran implementados distintos TDAs que puedes utilizar (lista, pila, cola, cola con prioridad y mapas). 
-
-Las implementaciones no son las más eficientes (todas usan como estructura de datos una **lista enlazada**), por lo que puedes reemplazarlas por las que has realizado en los labs.
-
-## Otros códigos (en carpeta examples)
-Para ejecutar los distintos ejemplos que hay en la carpeta `examples`, primero debes compilarlos. Si estamos en la carpeta raíz:
-````
-gcc tdas/*.c examples/example2_menu.c -Wno-unused-result -o example
-````
-Y luego ejecutarlos:
-````
-./example
-````
+## Funcionalidad
+Por mi parte no he encontrado ninguna lectura de datos que me genere error/no funcionen. Asi que no tengo nada que agregar en esta parte, ningun error, ni causas posibles 
+## Ejemplo (ingresado en el teclado)
+1
+Universidad
+//Se agrega la categoria UNIVERSIDAD
+1
+TraBajO
+//Se agrega la categoria TRABAJO
+2
+trabaJo
+//se elimina la categoria TRABAJO
+4
+universidad
+Terminar tarea 1
+//se almacena la tarea "Terminar tarea 1"
+6
+//se muestra por pantalla la tarea mas antigua (primera en la cola), se elimina, y al haber solo una tarea se muestra por pantalla el mensaje ¡Libre de pendientes!
+0
+//se acaba la ejecucion
