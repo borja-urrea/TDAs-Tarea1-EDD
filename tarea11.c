@@ -20,7 +20,7 @@ void aMayusculas(char *cadenaAmayus){
 }
 
 void mostrarOpciones(){
-  printf("=========================\n");
+  printf("\n\n=========================\n");
   printf("Selecciona una funcion\n");
   printf("=========================\n");
   printf("1. Agregar nueva categoria\n");
@@ -205,10 +205,10 @@ void recolectarDatos(List *listaCategorias, Queue *colaTareas){
 
         mostrarLista(listaCategorias);
         printf("Ingrese categoria a la que pertenece su tarea\n");
-        fgets(tareaNueva -> ncategoria, 50, stdin);
-        tareaNueva -> ncategoria[strcspn(tareaNueva -> ncategoria, "\n")] = 0;
-        aMayusculas(tareaNueva -> ncategoria);
-        
+        if (fgets(tareaNueva -> ncategoria, 50, stdin)){
+          tareaNueva -> ncategoria[strcspn(tareaNueva -> ncategoria, "\n")] = 0;
+          aMayusculas(tareaNueva -> ncategoria);
+        }
         while(existeCategoria(listaCategorias, tareaNueva -> ncategoria) == 0){
           printf("Categoria NO valida, ingresar otra\n");
           fgets(tareaNueva -> ncategoria, 50, stdin);
@@ -266,7 +266,7 @@ void recolectarDatos(List *listaCategorias, Queue *colaTareas){
         printf("Ingrese la categoria para mostrar sus tareas \n");
         mostrarLista(listaCategorias);
         char categoria[50];
-        if(fgets(categoria, 50, stdin)){
+        if(fgets(categoria, sizeof(categoria), stdin)){
           categoria[strcspn(categoria, "\n")] = 0;
           aMayusculas(categoria);
 
